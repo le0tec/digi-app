@@ -1,20 +1,26 @@
-const CACHE = "digi-app";
+const CACHE = "digi-app-v3";
 
-self.addEventListener("install", e => {
-  e.waitUntil(
+const urlsToCache = [
+  "./",
+  "./index.html",
+  "./style.css",
+  "./script.js",
+  "./manifest.json",
+  "./icon.png"
+];
+
+self.addEventListener("install", event => {
+  event.waitUntil(
     caches.open(CACHE).then(cache => {
-      return cache.addAll([
-        "./",
-        "/index.html",
-        "/style.css",
-        "/script.js"
-      ]);
+      return cache.addAll(urlsToCache);
     })
   );
 });
 
-self.addEventListener("fetch", e => {
-  e.respondWith(
-    fetch(e.request).catch(() => caches.match(e.request))
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
   );
 });
