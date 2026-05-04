@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DigiApp</title>
+
+  <meta name="description" content="Buscador de Digimons">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+<header>
+  <h1>🦖 DigiApp</h1>
+</header>
+
+<main class="container">
+
+  <div class="search-box">
+    <input id="digimonInput" placeholder="Digite um Digimon">
+    <button onclick="buscarDigimon()">Buscar</button>
+  </div>
+
+  <div id="resultado" class="card"></div>
+
+  <button onclick="mostrarFavoritos()">⭐ Favoritos</button>
+  <button onclick="toggleTheme()">🌙 Tema</button>
+  <button onclick="obterLocalizacao()">📍 Localização</button>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
